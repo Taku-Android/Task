@@ -1,21 +1,22 @@
 package com.example.route
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ahmedtaku.mafqoud.api.ApiManager
-import com.example.ProductRepository
 import com.example.route.api.model.Product
-import com.google.gson.Gson
+import com.example.route.repository.ProductRepository
+import com.example.route.repository.ProductsRemoteDataSourceImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
 
+    private val productDataSource = ProductsRemoteDataSourceImpl(ApiManager.getApis())
+    private val repository = ProductRepository(productDataSource)
 
-    val repository = ProductRepository()
+
     private val _products = MutableLiveData<List<Product?>?>()
     val products: LiveData<List<Product?>?> get() = _products
 

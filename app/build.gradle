@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 
 }
 
@@ -26,11 +27,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+       // sourceCompatibility JavaVersion.VERSION_17
+      //  targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '17'
+        //jvmTarget = '17'
+        jvmTarget = '11'
     }
     buildFeatures {
         dataBinding true
@@ -68,4 +72,11 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
 
 
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+
+
+}
+kapt {
+    correctErrorTypes true
 }
