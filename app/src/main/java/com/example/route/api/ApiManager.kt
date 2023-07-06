@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 class ApiManager {
 
     companion object{
-        val EndPoint = "https://dummyjson.com/"
+        const val EndPoint = "https://dummyjson.com/"
         var retrofit : Retrofit?=null
         @Synchronized fun getInstance():Retrofit{
             if (retrofit == null){
